@@ -20,7 +20,8 @@ const main = async() => {
         });
         console.log(data);
         console.log(payload);
-
+        console.log(repository);
+        console.log(token)
       } catch (error) {
         core.setFailed(error.message);
       }
