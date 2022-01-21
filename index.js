@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { pipeline } = require('stream');
 
 const main = async() => {
     try {
@@ -11,7 +10,6 @@ const main = async() => {
         const description = core.getInput('description', {required: true});
         const targetURL = core.getInput('target-url', {required: false});
         const token = process.env['GITHUB_TOKEN'];
-
         const octokit = new github.getOctokit(token);
 
         const { data: pullRequest } = await octokit.rest.pulls.get({
@@ -20,10 +18,9 @@ const main = async() => {
             pull_number: prNumber
         });
 
-        const sha = pullRequest.head.sha
-        console.log(sha);
+        const sha = pullRequest.head.sha;
 
-        const { data: prStatus } = await octokit.rest.repos.createCommitStatus({
+        await octokit.rest.repos.createCommitStatus({
             owner: repository.split('/')[0],
             repo: repository.split('/')[1],
             sha,
@@ -32,8 +29,6 @@ const main = async() => {
             description,
             context
         });
-
-        console.log(prStatus);
       } catch (error) {
         core.setFailed(error.message);
       }
