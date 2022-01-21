@@ -9,8 +9,7 @@ const main = async() => {
         const state = core.getInput('state', {required: true});
         const description = core.getInput('description', {required: true});
         const targetURL = core.getInput('target-url', {required: false});
-        const token = core.getInput('token', {required: true});
-        const ghToken = process.env['GITHUB_TOKEN'];
+        const token = process.env['GITHUB_TOKEN'];
 
         const octokit = new github.getOctokit(token);
 
@@ -21,8 +20,6 @@ const main = async() => {
         });
 
         console.log(pullRequest);
-        console.log(ghToken);
-        console.log(token);
       } catch (error) {
         core.setFailed(error.message);
       }
