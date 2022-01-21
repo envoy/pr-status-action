@@ -1,31 +1,16 @@
-# pr-status-action
+# PR Status Github Action
 Github Action to set Github PR with a Context and a Status
 
 ## Inputs
 
-### repository
-Description: 'Git Repository name'
-Required: true
-
-### pr-number
-Description: 'PR number in the Git Repository'
-Required: true
-
-### context
-Description: Name to use as a Context in PR
-Required: true
-
-### state
-Description: 'State to set in the PR context'
-Required: true
-
-### description
-Description: A short description to define the status of the Context
-Required: true
-
-### target-url
-Description: The target URL to associate with the Context
-Required: false
+Name | Description | Required
+--- | --- | ---
+`repository` | Git Repository name | `true`
+`pr-number` | PR number in the Git Repository | `true`
+`context` | Name to use as a Context in PR | `true`
+`state` | State to set in the PR context | `true`
+`description` | A short description to define the status of the Context | `true`
+`target-url` | The target URL to associate with the Context | `false`
 
 ## Example Usage
 
