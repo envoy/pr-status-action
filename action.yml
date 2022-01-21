@@ -23,9 +23,6 @@ inputs:
   target-url:
     description: The target URL to associate with the Context
     required: false
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 runs:
   using: 'node16'
   main: 'dist/index.js'
