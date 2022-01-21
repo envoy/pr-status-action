@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { pipeline } = require('stream');
 
 const main = async() => {
     try {
@@ -19,7 +20,20 @@ const main = async() => {
             pull_number: prNumber
         });
 
-        console.log(pullRequest);
+        const sha = pullRequest.head.sha
+        console.log(sha);
+
+        const { data: prStatus } = await octokit.rest.repos.createCommitStatus({
+            owner: repository.split('/')[0],
+            repo: repository.split('/')[1],
+            sha,
+            state,
+            target_url: targetURL,
+            description,
+            context
+        });
+
+        console.log(prStatus);
       } catch (error) {
         core.setFailed(error.message);
       }
