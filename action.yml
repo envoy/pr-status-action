@@ -1,0 +1,31 @@
+name: 'Set PR Status'
+author: gp@envoy.com
+description: 'Set PR to the input status, description and a target URL'
+branding:
+  icon: git-pull-request
+  color: blue
+inputs:
+  repository:
+    description: 'Git Repository name'
+    required: true
+  pr-number:
+    description: 'PR number in the Git Repository'
+    required: true
+  context:
+    description: Name to use as a Context in PR
+    required: true
+  state:
+    description: 'State to set in the PR context'
+    required: true
+  description:
+    description: A short description to define the status of the Context
+    required: true
+  target-url:
+    description: The target URL to associate with the Context
+    required: false
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node16'
+  main: 'index.js'

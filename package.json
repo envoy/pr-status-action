@@ -1,0 +1,32 @@
+{
+  "name": "pr-status-action",
+  "version": "1.0.0",
+  "description": "Github Action to set Github PR with a Context and a Status",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/envoy/pr-status-action.git"
+  },
+  "keywords": [
+    "javascript",
+    "github-action",
+    "github",
+    "action",
+    "pull-request",
+    "pr-context"
+  ],
+  "author": "gp@envoy.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/envoy/pr-status-action/issues"
+  },
+  "homepage": "https://github.com/envoy/pr-status-action#readme"
+}
