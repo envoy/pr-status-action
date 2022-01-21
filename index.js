@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 const main = async() => {
     try {
-        const repository = core.getInput('respository', {required: true});
+        const repository = core.getInput('repository', {required: true});
         const prNumber = core.getInput('pr-number', {required: true});
         const context = core.getInput('context', {required: true});
         const state = core.getInput('state', {required: true});
