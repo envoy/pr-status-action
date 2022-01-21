@@ -11,7 +11,8 @@ const main = async() => {
         const targetURL = core.getInput('target-url', {required: false});
         const payload = JSON.stringify(github.context.payload, undefined, 2)
         const ghContext = github.context
-        
+        const token = core.getInput('token', {required: true});
+
         const octokit = new github.getOctokit(token);
 
         const { data: pullRequest } = await octokit.rest.pulls.get({
