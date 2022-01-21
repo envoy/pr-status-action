@@ -8470,6 +8470,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(6024);
 const github = __nccwpck_require__(5016);
+const { pipeline } = __nccwpck_require__(2781);
 
 const main = async() => {
     try {
@@ -8489,7 +8490,20 @@ const main = async() => {
             pull_number: prNumber
         });
 
-        console.log(pullRequest);
+        const sha = pullRequest.head.sha
+        console.log(sha);
+
+        const { data: prStatus } = await octokit.rest.repos.createCommitStatus({
+            owner: repository.split('/')[0],
+            repo: repository.split('/')[1],
+            sha,
+            state,
+            target_url: targetURL,
+            description,
+            context
+        });
+
+        console.log(prStatus);
       } catch (error) {
         core.setFailed(error.message);
       }
