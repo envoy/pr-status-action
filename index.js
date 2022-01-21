@@ -9,9 +9,8 @@ const main = async() => {
         const state = core.getInput('state', {required: true});
         const description = core.getInput('description', {required: true});
         const targetURL = core.getInput('target-url', {required: false});
-        const payload = JSON.stringify(github.context.payload, undefined, 2)
-        const ghContext = github.context
         const token = core.getInput('token', {required: true});
+        const ghToken = process.env['GITHUB_TOKEN'];
 
         const octokit = new github.getOctokit(token);
 
@@ -24,7 +23,8 @@ const main = async() => {
         console.log(pullRequest);
         console.log(payload);
         console.log(repository);
-        console.log(ghContext);
+        console.log(ghToken);
+        console.log(token);
       } catch (error) {
         core.setFailed(error.message);
       }
