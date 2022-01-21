@@ -9,7 +9,7 @@ const main = async() => {
         const state = core.getInput('state', {required: true});
         const description = core.getInput('description', {required: true});
         const targetURL = core.getInput('target-url', {required: false});
-        const token = core.getInput('GITHUB_TOKEN', {required: true});
+        const token = process.env.GITHUB_TOKEN;
         const payload = JSON.stringify(github.context.payload, undefined, 2)
         
         const octokit = new github.getOctokit(token);
