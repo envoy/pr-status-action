@@ -21,8 +21,6 @@ const main = async() => {
         });
 
         console.log(pullRequest);
-        console.log(payload);
-        console.log(repository);
         console.log(ghToken);
         console.log(token);
       } catch (error) {
