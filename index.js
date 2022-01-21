@@ -9,19 +9,21 @@ const main = async() => {
         const state = core.getInput('state', {required: true});
         const description = core.getInput('description', {required: true});
         const targetURL = core.getInput('target-url', {required: false});
-        const token = process.env.GITHUB_TOKEN;
         const payload = JSON.stringify(github.context.payload, undefined, 2)
+        const ghContext = github.context
         
         const octokit = new github.getOctokit(token);
 
-        const data = await octokit.request('GET /repos/{repository}/pulls/{pull_number}', {
-            repository,
+        const { data: pullRequest } = await octokit.rest.pulls.get({
+            owner: repository.split('/')[0],
+            repo: repository.split('/')[1],
             pull_number: prNumber
         });
-        console.log(data);
+
+        console.log(pullRequest);
         console.log(payload);
         console.log(repository);
-        console.log(token)
+        console.log(ghContext);
       } catch (error) {
         core.setFailed(error.message);
       }
